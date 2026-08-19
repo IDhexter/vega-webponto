@@ -15,10 +15,15 @@ try {
     $local_ip = $_SERVER['REMOTE_ADDR'];
     $hostname = gethostbyaddr($local_ip);
     
+    $remote_ip = $local_ip;
     if ($hostname !== $local_ip && $hostname !== false) {
-        $records->last_ip = $local_ip . ' - ' . $hostname;
+        $remote_ip = $local_ip . ' - ' . $hostname;
+    }
+    
+    if (!$records->time1) {
+        $records->last_ip = "Ent: " . $remote_ip;
     } else {
-        $records->last_ip = $local_ip;
+        $records->last_ip = $records->last_ip . " | Sai: " . $remote_ip;
     }
 
     $obs = isset($_POST['obs']) ? trim($_POST['obs']) : '';
