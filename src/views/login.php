@@ -77,7 +77,7 @@
     <body>
         <!-- Video em Loop (Placeholder - Você pode alterar o arquivo na pasta) -->
         <video autoplay loop muted playsinline id="bg-video">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" type="video/mp4">
+            <source src="assets/video/bg.mp4" type="video/mp4">
         </video>
 
         <form class="form-login" action="#" method="post">
@@ -131,3 +131,4 @@
         </form>
     </body>
 </html>
+
