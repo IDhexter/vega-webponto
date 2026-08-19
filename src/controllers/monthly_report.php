@@ -31,6 +31,7 @@ for ($yearDiff = 0; $yearDiff <= 2; $yearDiff++) {
 }
 
 $registries = WorkingHours::getMonthlyReport($selectedUserId, $selectedPeriod);
+$selectedUser = User::getOne(['id' => $selectedUserId]);
 
 $report = [];
 
@@ -38,23 +39,35 @@ $workDay = 0;
 
 $sumOfWorkedTime = 0;
 
-$lastDay = getLastDayOfMonth($currentDate)->format('d');
+$lastDay = getLastDayOfMonth(new DateTime("{$selectedPeriod}-1"))->format('d');
 
 for($day = 1; $day <= $lastDay; $day++) {
-    $date = $currentDate->format('Y-m') . '-' . sprintf('%02d', $day);
+    $date = $selectedPeriod . '-' . sprintf('%02d', $day);
     $registry = isset($registries[$date]) && $registries[$date]? $registries[$date]: null;
     
-    if(isPastWorkday($date)) $workDay++;
+    $isWorkingPeriod = true;
+    if (strtotime($date) < strtotime($selectedUser->start_date)) {
+        $isWorkingPeriod = false;
+    }
+    if ($selectedUser->end_date && strtotime($date) > strtotime($selectedUser->end_date)) {
+        $isWorkingPeriod = false;
+    }
+
+    if(isPastWorkday($date) && $isWorkingPeriod) {
+        $workDay++;
+    }
 
     if($registry) {
         $sumOfWorkedTime += $registry->worked_time;
-
+        $registry->isWorkingPeriod = $isWorkingPeriod;
         array_push($report, $registry);
     } else {
-        array_push($report, new WorkingHours([
+        $newRegistry = new WorkingHours([
             'work_date' => $date,
             'worked_time' => 0
-        ]));
+        ]);
+        $newRegistry->isWorkingPeriod = $isWorkingPeriod;
+        array_push($report, $newRegistry);
     }
 }
 

@@ -94,6 +94,10 @@ class WorkingHours extends Model {
     }
 
     function getBalance() {
+        if (isset($this->isWorkingPeriod) && !$this->isWorkingPeriod) {
+            return '';
+        }
+
         if (!$this->time1 && !isPastWorkday($this->work_date)) return '';
         if ($this->worked_time == DAILY_TIME) return '-';
 
