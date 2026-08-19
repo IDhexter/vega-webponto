@@ -20,4 +20,11 @@
             <h3 class="value"><?= $hoursInMonth ?></h3>
         </div>
     </div>
+    
+    <div class="mt-5 text-center">
+        <a href="export_csv.php" class="btn btn-lg btn-secondary">
+            <i class="icofont-download mr-2"></i>
+            Exportar Relatório Mensal (.CSV)
+        </a>
+    </div>
 </main>
