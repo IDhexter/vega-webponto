@@ -46,6 +46,7 @@
                 <th>Entrada</th>
                 <th>Saída</th>
                 <th>Saldo</th>
+                <th>Observações</th>
                 <th>IP</th>
             </thead>
 
@@ -56,6 +57,14 @@
 						<td><?= $registry->time1 ?></td>
 						<td><?= $registry->time2 ?></td>
                         <td><?= $registry->getBalance() ?></td>
+                        <td>
+                            <?php 
+                                $obs = [];
+                                if (isset($registry->obs_time1) && trim($registry->obs_time1)) $obs[] = "<b>Ent:</b> " . htmlspecialchars($registry->obs_time1);
+                                if (isset($registry->obs_time2) && trim($registry->obs_time2)) $obs[] = "<b>Sai:</b> " . htmlspecialchars($registry->obs_time2);
+                                echo implode('<br>', $obs);
+                            ?>
+                        </td>
                         <td><?= $registry->last_ip ?></td>
                     </tr>
                 <?php endforeach ?>
@@ -64,9 +73,8 @@
                     <td>Horas Trabalhadas</td>
                     <td colspan="2"><?= $sumOfWorkedTime ?></td>
                     <td>Saldo Mensal</td>
-                    <td><?= $balance ?></td>
+                    <td colspan="2"><?= $balance ?></td>
                 </tr>
         </table>
     </div>
 </main>
-
