@@ -39,7 +39,7 @@ class WorkingHours extends Model {
         $nextTime = $this->getNextTime();
 
         if ($nextTime === 'time1') {
-            return 'exitTime';
+            return null;
         } elseif ($nextTime === 'time2') {
             return 'workedInterval';
         } else {
@@ -186,3 +186,4 @@ class WorkingHours extends Model {
         return $times;
     }
 }
+
