@@ -7,21 +7,31 @@
         );
     ?>
 
-    <div class="summary-boxes">
-        <div class="summary-box" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
-            <i class="icon icofont-users text-primary"></i>
-            <p class="title">Qtde de Funcionários</p>
-            <h3 class="value"><?= $activeUsersCount ?></h3>
+    <!-- Top Cards (Resumo numérico) -->
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center py-4">
+                    <i class="icofont-users text-primary mb-2" style="font-size: 3.5rem;"></i>
+                    <p class="mb-2" style="font-size: 1.2rem;">Qtde de Funcionários</p>
+                    <h3 class="mb-0 font-weight-bold" style="font-size: 2rem;"><?= $activeUsersCount ?></h3>
+                </div>
+            </div>
         </div>
 
-        <div class="summary-box" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
-            <i class="icon icofont-sand-clock text-success"></i>
-            <p class="title">Total de Horas no Mês</p>
-            <h3 class="value"><?= $hoursInMonth ?></h3>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center py-4">
+                    <i class="icofont-sand-clock text-success mb-2" style="font-size: 3.5rem;"></i>
+                    <p class="mb-2" style="font-size: 1.2rem;">Total de Horas no Mês</p>
+                    <h3 class="mb-0 font-weight-bold" style="font-size: 2rem;"><?= $hoursInMonth ?></h3>
+                </div>
+            </div>
         </div>
     </div>
     
-    <div class="mt-4 row">
+    <!-- Middle Cards (Listas dinâmicas) -->
+    <div class="row">
         <!-- Trabalhando Agora -->
         <div class="col-md-6 mb-4">
             <div class="card h-100">
@@ -71,8 +81,8 @@
         </div>
     </div>
 
-    <!-- Resumo de Horas no Mês -->
-    <div class="card mt-2">
+    <!-- Bottom Card (Resumo de Horas no Mês) -->
+    <div class="card mb-4">
         <div class="card-header">
             <h4 class="card-title mb-0"><i class="icofont-chart-bar-graph mr-2 text-primary"></i> Horas Trabalhadas no Mês por Funcionário</h4>
         </div>
@@ -87,8 +97,8 @@
                 <tbody>
                     <?php foreach ($hoursByEmployee as $emp): ?>
                         <tr>
-                            <td><?= htmlspecialchars($emp['name']) ?></td>
-                            <td class="text-center"><strong><?= getTimeStringFromSeconds($emp['total_seconds']) ?></strong></td>
+                            <td class="align-middle"><?= htmlspecialchars($emp['name']) ?></td>
+                            <td class="text-center align-middle"><strong><?= getTimeStringFromSeconds($emp['total_seconds']) ?></strong></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -96,8 +106,8 @@
         </div>
     </div>
 
-    <div class="mt-4 mb-5 text-center">
-        <a href="export_csv.php" class="btn btn-lg" style="background-color: #D7DF35; color: #0A0A0A; font-weight: bold; border-color: #D7DF35;">
+    <div class="mb-5 text-center">
+        <a href="export_csv.php" class="btn btn-lg" style="background-color: #D7DF35; color: #0A0A0A; font-weight: bold; border-color: #D7DF35; border-radius: 6px;">
             <i class="icofont-download mr-2"></i>
             Exportar Relatório Mensal (.CSV)
         </a>
