@@ -21,7 +21,9 @@ try {
         $records->last_ip = $local_ip;
     }
 
-    $records->innout($currentTime);
+    $obs = isset($_POST['obs']) ? trim($_POST['obs']) : '';
+
+    $records->innout($currentTime, $obs);
     
     addSuccessMsg('Ponto inserido com sucesso!');
 } catch(AppException $e) {

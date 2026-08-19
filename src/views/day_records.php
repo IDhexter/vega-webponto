@@ -22,11 +22,19 @@
             </div>
         </div>
 
-        <div class="card-footer d-flex justify-content-end">
-            <?php if ($user->is_admin): ?> <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3"> <i class="icofont-trash mr-1"></i> Limpar </a> <?php endif; ?> <a href="innout.php" class="btn btn-success btn-lg">
-                <i class="icofont-check mr-1"></i>
-                Bater o Ponto
-            </a>
-        </div>
+        <form action="innout.php" method="post" class="card-footer d-flex justify-content-between align-items-center">
+            <input type="text" name="obs" class="form-control w-50" placeholder="OBS: Justificativa (opcional)">
+            <div>
+                <?php if ($user->is_admin): ?> 
+                    <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3"> 
+                        <i class="icofont-trash mr-1"></i> Limpar 
+                    </a> 
+                <?php endif; ?> 
+                <button type="submit" class="btn btn-success btn-lg">
+                    <i class="icofont-check mr-1"></i>
+                    Bater o Ponto
+                </button>
+            </div>
+        </form>
     </div>
 </main>

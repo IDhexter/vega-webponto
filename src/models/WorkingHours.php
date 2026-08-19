@@ -12,7 +12,9 @@ class WorkingHours extends Model {
         'time3',
         'time4',
         'last_ip',
-        'worked_time'
+        'worked_time',
+        'obs_time1',
+        'obs_time2'
     ];
 
     public static function loadFromUserAndDate($userId, $workDate) {
@@ -47,7 +49,7 @@ class WorkingHours extends Model {
         }
     }
 
-    public function innout($time) {
+    public function innout($time, $obs = '') {
         $timeColumn = $this->getNextTime();
 
         if (!$timeColumn) {
@@ -55,6 +57,13 @@ class WorkingHours extends Model {
         }
 
         $this->$timeColumn = $time;
+        
+        if ($timeColumn === 'time1') {
+            $this->obs_time1 = $obs;
+        } elseif ($timeColumn === 'time2') {
+            $this->obs_time2 = $obs;
+        }
+        
         $this->worked_time = getSecondsFromDateInterval($this->getWorkedInterval());
         
         if ($this->id) {
@@ -186,4 +195,3 @@ class WorkingHours extends Model {
         return $times;
     }
 }
-
