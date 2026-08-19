@@ -77,7 +77,7 @@
     <body>
         <!-- Video em Loop (Placeholder - Você pode alterar o arquivo na pasta) -->
         <video autoplay loop muted playsinline id="bg-video">
-            <source src="assets/video/14523608_3840_2160_30fps.mp4" type="video/mp4">
+            <source src="assets/video/VideoWebPonto02.mp4" type="video/mp4">
         </video>
 
         <form class="form-login" action="#" method="post">
@@ -131,6 +131,7 @@
         </form>
     </body>
 </html>
+
 
 
 
