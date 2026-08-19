@@ -320,7 +320,7 @@ main.content .content-title h2 {
 
 .form-control:focus {
     background-color: #333 !important;
-    border-color: #78BFE9 !important;
+    border-color: #D7DF35 !important;
     color: #FFF !important;
 }
 
@@ -337,14 +337,14 @@ main.content .content-title h2 {
 }
 
 .btn-primary {
-    background-color: #78BFE9 !important;
-    border-color: #78BFE9 !important;
+    background-color: #D7DF35 !important;
+    border-color: #D7DF35 !important;
     color: #0A0A0A !important;
     font-weight: bold;
 }
 .btn-primary:hover {
-    background-color: #68ADD7 !important;
-    border-color: #68ADD7 !important;
+    background-color: #c0c72e !important;
+    border-color: #c0c72e !important;
     color: #0A0A0A !important;
 }
 

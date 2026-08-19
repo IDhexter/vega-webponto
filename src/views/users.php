@@ -12,43 +12,52 @@
     <a 
         class="btn btn-lg btn-primary mb-3"
         href="save_user.php"
+        style="border-radius: 6px;"
     >
-        Novo Usuário
+        <i class="icofont-plus mr-2"></i>Novo Usuário
     </a>
 
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Data de Admissão</th>
-            <th>Data de Desligamento</th>
-            <th>Ações</th>
-        </thead>
+    <div class="card">
+        <div class="card-body p-0">
+            <table class="table table-striped table-hover mb-0" style="background-color: #fff; color: #333;">
+                <thead style="background-color: #f8f9fa;">
+                    <tr>
+                        <th style="border-bottom: none;">Nome</th>
+                        <th style="border-bottom: none;">Email</th>
+                        <th style="border-bottom: none;">Data de Admissão</th>
+                        <th style="border-bottom: none;">Data de Desligamento</th>
+                        <th style="border-bottom: none;">Ações</th>
+                    </tr>
+                </thead>
 
-        <tbody>
-            <?php foreach($users as $user): ?>
-                <tr>
-                    <td><?= $user->name ?></td>
-                    <td><?= $user->email ?></td>
-                    <td><?= $user->start_date ?></td>
-                    <td><?= $user->end_date ?></td>
-                    <td>
-                        <a 
-                            href="save_user.php?update=<?= $user->id ?>" 
-                            class="btn btn-warning rounded-circle mr-2"
-                        >
-                            <i class="icofont-edit"></i>
-                        </a>
+                <tbody>
+                    <?php foreach($users as $user): ?>
+                        <tr>
+                            <td class="align-middle"><?= htmlspecialchars($user->name) ?></td>
+                            <td class="align-middle"><?= htmlspecialchars($user->email) ?></td>
+                            <td class="align-middle"><?= $user->start_date ?></td>
+                            <td class="align-middle"><?= $user->end_date ?></td>
+                            <td class="align-middle">
+                                <a 
+                                    href="save_user.php?update=<?= $user->id ?>" 
+                                    class="btn btn-warning rounded-circle mr-2"
+                                    title="Editar"
+                                >
+                                    <i class="icofont-edit"></i>
+                                </a>
 
-                        <a 
-                            href="?delete=<?= $user->id ?>"
-                            class="btn btn-danger rounded-circle"
-                        >
-                            <i class="icofont-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            <?php endforeach?>
-        </tbody>
-    </table>
+                                <a 
+                                    href="?delete=<?= $user->id ?>"
+                                    class="btn btn-danger rounded-circle"
+                                    title="Excluir"
+                                >
+                                    <i class="icofont-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </main>
