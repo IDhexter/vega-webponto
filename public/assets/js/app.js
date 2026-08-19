@@ -34,4 +34,29 @@ function activateClock() {
     }, 1000)
 }
 
+function activateServerClock() {
+    const serverClock = document.getElementById('server-clock')
+    if (!serverClock) return
+
+    function addOneSecond(hours, minutes, seconds) {
+        const d = new Date()
+        
+        d.setHours(parseInt(hours))
+        d.setMinutes(parseInt(minutes))
+        d.setSeconds(parseInt(seconds) + 1)
+    
+        const h = `${d.getHours()}`.padStart(2, 0)
+        const m = `${d.getMinutes()}`.padStart(2, 0)
+        const s = `${d.getSeconds()}`.padStart(2, 0)
+    
+        return `${h}:${m}:${s}`
+    }
+
+    setInterval(function() {
+        const parts = serverClock.innerHTML.split(':')
+        serverClock.innerHTML = addOneSecond(...parts)
+    }, 1000)
+}
+
 activateClock()
+activateServerClock()
