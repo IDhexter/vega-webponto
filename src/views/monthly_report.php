@@ -42,11 +42,12 @@
 
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                <th>Dia</th>
+                <th style="width: 10%;">Dia</th>
                 <th>Entrada</th>
+                <th>Obs. Entrada</th>
                 <th>Saída</th>
+                <th>Obs. Saída</th>
                 <th>Saldo</th>
-                <th>Observações</th>
                 <th>IP</th>
             </thead>
 
@@ -55,25 +56,19 @@
                     <tr>
                         <td><?= formatDateWithLocale($registry->work_date, 'd/m/Y') ?></td>
 						<td><?= $registry->time1 ?></td>
+                        <td><?= $registry->obs_time1 ? htmlspecialchars($registry->obs_time1) : '' ?></td>
 						<td><?= $registry->time2 ?></td>
+                        <td><?= $registry->obs_time2 ? htmlspecialchars($registry->obs_time2) : '' ?></td>
                         <td><?= $registry->getBalance() ?></td>
-                        <td>
-                            <?php 
-                                $obs = [];
-                                if (isset($registry->obs_time1) && trim($registry->obs_time1)) $obs[] = "<b>Ent:</b> " . htmlspecialchars($registry->obs_time1);
-                                if (isset($registry->obs_time2) && trim($registry->obs_time2)) $obs[] = "<b>Sai:</b> " . htmlspecialchars($registry->obs_time2);
-                                echo implode('<br>', $obs);
-                            ?>
-                        </td>
                         <td><?= $registry->last_ip ?></td>
                     </tr>
                 <?php endforeach ?>
 
                 <tr class="bg-primary text-white">
                     <td>Horas Trabalhadas</td>
-                    <td colspan="2"><?= $sumOfWorkedTime ?></td>
+                    <td colspan="4"><?= $sumOfWorkedTime ?></td>
                     <td>Saldo Mensal</td>
-                    <td colspan="2"><?= $balance ?></td>
+                    <td><?= $balance ?></td>
                 </tr>
         </table>
     </div>
