@@ -8,14 +8,14 @@
     ?>
 
     <div class="summary-boxes">
-        <div class="summary-box bg-primary">
-            <i class="icon icofont-users"></i>
+        <div class="summary-box" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
+            <i class="icon icofont-users text-primary"></i>
             <p class="title">Qtde de Funcionários</p>
             <h3 class="value"><?= $activeUsersCount ?></h3>
         </div>
 
-        <div class="summary-box bg-success">
-            <i class="icon icofont-sand-clock"></i>
+        <div class="summary-box" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
+            <i class="icon icofont-sand-clock text-success"></i>
             <p class="title">Total de Horas no Mês</p>
             <h3 class="value"><?= $hoursInMonth ?></h3>
         </div>
