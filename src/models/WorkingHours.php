@@ -194,4 +194,62 @@ class WorkingHours extends Model {
 
         return $times;
     }
+
+    public static function getWorkingNow() {
+        $today = date('Y-m-d');
+        $sql = "SELECT u.name, wh.time1 
+                FROM working_hours wh 
+                JOIN users u ON u.id = wh.user_id 
+                WHERE wh.work_date = '{$today}' 
+                AND wh.time1 IS NOT NULL 
+                AND wh.time2 IS NULL";
+        
+        $result = Database::getResultFromQuery($sql);
+        $users = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+        }
+        return $users;
+    }
+
+    public static function getIncompletePunches() {
+        $today = date('Y-m-d');
+        $sql = "SELECT u.name, wh.work_date, wh.time1 
+                FROM working_hours wh 
+                JOIN users u ON u.id = wh.user_id 
+                WHERE wh.work_date < '{$today}' 
+                AND wh.time1 IS NOT NULL 
+                AND wh.time2 IS NULL
+                ORDER BY wh.work_date DESC";
+        
+        $result = Database::getResultFromQuery($sql);
+        $users = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+        }
+        return $users;
+    }
+
+    public static function getHoursByEmployeeMonth($yearAndMonth) {
+        $sql = "SELECT u.name, SUM(wh.worked_time) as total_seconds 
+                FROM working_hours wh 
+                JOIN users u ON u.id = wh.user_id 
+                WHERE wh.work_date LIKE '{$yearAndMonth}-%' 
+                GROUP BY u.id, u.name 
+                ORDER BY total_seconds DESC";
+        
+        $result = Database::getResultFromQuery($sql);
+        $users = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+        }
+        return $users;
+    }
+
 }

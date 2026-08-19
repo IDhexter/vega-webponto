@@ -6,16 +6,19 @@ requireValidSession(true);
 
 $activeUsersCount = User::getActiveUsersCount();
 
-$absentUsers = WorkingHours::getAbsentUsers();
-
 $yearAndMonth = (new DateTime())->format('Y-m');
 
 $seconds = WorkingHours::getWorkedTimeInMonth($yearAndMonth);
-
 $hoursInMonth = explode(':', getTimeStringFromSeconds($seconds))[0];
+
+$workingNow = WorkingHours::getWorkingNow();
+$incompletePunches = WorkingHours::getIncompletePunches();
+$hoursByEmployee = WorkingHours::getHoursByEmployeeMonth($yearAndMonth);
 
 loadTemplateView('manager_report', [
     'activeUsersCount' => $activeUsersCount,
-    'absentUsers' => $absentUsers,
-    'hoursInMonth' => $hoursInMonth
+    'hoursInMonth' => $hoursInMonth,
+    'workingNow' => $workingNow,
+    'incompletePunches' => $incompletePunches,
+    'hoursByEmployee' => $hoursByEmployee
 ]);
