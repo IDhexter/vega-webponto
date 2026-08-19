@@ -59,11 +59,11 @@
                             
                             <?php if($user->is_admin): ?>
                                 <td class="align-middle p-1">
-                                    <input type="time" name="punches[<?= $registry->work_date ?>][time1]" class="form-control form-control-sm text-center font-weight-bold" style="background-color: transparent !important; color: #333 !important; border: none !important; box-shadow: none !important;" value="<?= $registry->time1 ?>">
+                                    <input type="time" name="punches[<?= $registry->work_date ?>][time1]" class="form-control form-control-sm text-center" step="1" style="background-color: transparent !important; color: #333 !important; border: none !important; box-shadow: none !important; font-family: inherit !important; font-size: inherit !important; font-weight: normal !important;" value="<?= $registry->time1 ?>">
                                 </td>
                                 <td class="align-middle"><?= $registry->obs_time1 ? htmlspecialchars($registry->obs_time1) : '' ?></td>
                                 <td class="align-middle p-1">
-                                    <input type="time" name="punches[<?= $registry->work_date ?>][time2]" class="form-control form-control-sm text-center font-weight-bold" style="background-color: transparent !important; color: #333 !important; border: none !important; box-shadow: none !important;" value="<?= $registry->time2 ?>">
+                                    <input type="time" name="punches[<?= $registry->work_date ?>][time2]" class="form-control form-control-sm text-center" step="1" style="background-color: transparent !important; color: #333 !important; border: none !important; box-shadow: none !important; font-family: inherit !important; font-size: inherit !important; font-weight: normal !important;" value="<?= $registry->time2 ?>">
                                 </td>
                                 <td class="align-middle"><?= $registry->obs_time2 ? htmlspecialchars($registry->obs_time2) : '' ?></td>
                             <?php else: ?>
@@ -97,3 +97,4 @@
         </form>
     </div>
 </main>
+
