@@ -20,6 +20,13 @@ try {
         $remote_ip = $local_ip . ' - ' . $hostname;
     }
     
+    // GPS Geolocation Capture
+    $lat = isset($_POST['lat']) && $_POST['lat'] ? $_POST['lat'] : null;
+    $lon = isset($_POST['lon']) && $_POST['lon'] ? $_POST['lon'] : null;
+    if ($lat && $lon) {
+        $remote_ip .= " [GPS: {$lat}, {$lon}]";
+    }
+
     if (!$records->time1) {
         $records->last_ip = "Ent: " . $remote_ip;
     } else {

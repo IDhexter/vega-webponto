@@ -23,6 +23,8 @@
         </div>
 
         <form action="innout.php" method="post" class="card-footer d-flex justify-content-between align-items-center">
+            <input type="hidden" name="lat" id="lat" value="">
+            <input type="hidden" name="lon" id="lon" value="">
             <input type="text" name="obs" class="form-control w-50" placeholder="OBS: Justificativa (opcional)">
             <div>
                 <?php if ($user->is_admin): ?> 
@@ -38,3 +40,14 @@
         </form>
     </div>
 </main>
+
+<script>
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById('lat').value = position.coords.latitude;
+            document.getElementById('lon').value = position.coords.longitude;
+        }, function(error) {
+            console.log("Geolocalização não permitida ou indisponível.");
+        });
+    }
+</script>
