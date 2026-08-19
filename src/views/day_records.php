@@ -23,7 +23,7 @@
         </div>
 
         <div class="card-footer d-flex justify-content-end">
-            <a href="innout.php" class="btn btn-success btn-lg">
+            <?php if ($user->is_admin): ?> <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3"> <i class="icofont-trash mr-1"></i> Limpar </a> <?php endif; ?> <a href="innout.php" class="btn btn-success btn-lg">
                 <i class="icofont-check mr-1"></i>
                 Bater o Ponto
             </a>

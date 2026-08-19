@@ -85,7 +85,7 @@ class WorkingHours extends Model {
         $workday = DateInterval::createFromDateString('8 hours');
 
         if (!$t1) {
-            return (new DateTimeImmutable())->add($workday);
+            return null;
         } elseif ($t2) {
             return $t2;
         } else {
