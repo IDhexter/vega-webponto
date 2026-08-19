@@ -98,7 +98,9 @@ class WorkingHours extends Model {
             return '';
         }
 
-        if (!$this->time1 && !isPastWorkday($this->work_date)) return '';
+        // Se não tiver batido ponto, não gera saldo negativo (escalas mistas)
+        if (!$this->time1) return '';
+
         if ($this->worked_time == DAILY_TIME) return '-';
 
         $balance = $this->worked_time - DAILY_TIME;

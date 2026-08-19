@@ -53,7 +53,9 @@ for($day = 1; $day <= $lastDay; $day++) {
         $isWorkingPeriod = false;
     }
 
-    if(isPastWorkday($date) && $isWorkingPeriod) {
+    // Apenas conta como dia de trabalho esperado se a pessoa realmente bateu o ponto.
+    // Isso evita gerar -8h em dias que ela simplesmente não estava escalada (escalas mistas).
+    if($isWorkingPeriod && $registry && $registry->time1) {
         $workDay++;
     }
 
