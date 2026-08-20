@@ -10,21 +10,23 @@
     <!-- Top Cards (Resumo numérico) -->
     <div class="row mt-4">
         <div class="col-md-6 mb-4">
-            <div class="card h-100" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
-                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center py-4">
-                    <i class="icofont-users text-primary mb-2" style="font-size: 3.5rem;"></i>
-                    <p class="mb-2" style="font-size: 1.2rem;">Qtde de Funcionários</p>
-                    <h3 class="mb-0 font-weight-bold" style="font-size: 2rem;"><?= $activeUsersCount ?></h3>
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title mb-0"><i class="icofont-users mr-2 text-primary"></i> Qtde de Funcionários</h4>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="min-height: 120px;">
+                    <h3 class="mb-0 font-weight-bold" style="font-size: 3.5rem; color: #EEEEEE;"><?= $activeUsersCount ?></h3>
                 </div>
             </div>
         </div>
 
         <div class="col-md-6 mb-4">
-            <div class="card h-100" style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.1); color: #EEEEEE;">
-                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center py-4">
-                    <i class="icofont-sand-clock text-success mb-2" style="font-size: 3.5rem;"></i>
-                    <p class="mb-2" style="font-size: 1.2rem;">Total de Horas no Mês</p>
-                    <h3 class="mb-0 font-weight-bold" style="font-size: 2rem;"><?= $hoursInMonth ?></h3>
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title mb-0"><i class="icofont-sand-clock mr-2 text-success"></i> Total de Horas no Mês</h4>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center" style="min-height: 120px;">
+                    <h3 class="mb-0 font-weight-bold" style="font-size: 3.5rem; color: #EEEEEE;"><?= $hoursInMonth ?></h3>
                 </div>
             </div>
         </div>
