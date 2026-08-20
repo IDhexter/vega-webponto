@@ -5,6 +5,6 @@
 
     <div>
         <h1><?= $title ?></h1>
-        <h2><?= $subtitle ?></h2>
+        <h2><?= $subtitle ?> <span class="mx-2">|</span> Horário do Servidor: <strong id="server-clock"><?= (new DateTime())->format('H:i:s') ?></strong></h2>
     </div>
 </div>
