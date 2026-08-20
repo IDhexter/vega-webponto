@@ -53,7 +53,7 @@ class WorkingHours extends Model {
         $timeColumn = $this->getNextTime();
 
         if (!$timeColumn) {
-            throw new AppException("Você já fez os 2 batimentos do dia!");
+            throw new AppException("Você já fez os 2 registros do dia!");
         }
 
         $this->$timeColumn = $time;
@@ -253,3 +253,4 @@ class WorkingHours extends Model {
     }
 
 }
+

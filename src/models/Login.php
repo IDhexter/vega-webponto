@@ -29,8 +29,11 @@ class Login extends Model {
         }
 
         // 1. Tentar LDAP
-        $ldap_host = "10.10.1.5";
-        $ldap_base_dn = "OU=Users and Groups,DC=vega,DC=local";
+        
+        $envPath = realpath(dirname(__FILE__) . '/../env.ini');
+        $env = parse_ini_file($envPath);
+        $ldap_host = isset($env['ldap_host']) ? $env['ldap_host'] : '127.0.0.1';
+        $ldap_base_dn = isset($env['ldap_base_dn']) ? $env['ldap_base_dn'] : 'DC=domain,DC=local';
         
         $ldap_conn = @ldap_connect($ldap_host, 389);
         if ($ldap_conn) {
