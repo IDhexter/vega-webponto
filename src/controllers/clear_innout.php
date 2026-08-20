@@ -32,11 +32,11 @@ try {
             }
             
             $records->update();
-            addSuccessMsg('Sua Saída foi desfeita. Você pode bater o ponto de saída novamente.');
+            addSuccessMsg('Sua Saída foi limpa. Você pode registrar a saída novamente.');
         } elseif ($records->time1) {
             // Se só tem entrada, limpa a entrada (deleta o registro)
             Database::executeSQL("DELETE FROM working_hours WHERE id = {$records->id}");
-            addSuccessMsg('Sua Entrada foi desfeita. O dia está zerado.');
+            addSuccessMsg('Sua Entrada foi limpa. O dia está zerado.');
         }
     } else {
         addErrorMsg('Não há registros de ponto para desfazer.');

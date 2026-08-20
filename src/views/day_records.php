@@ -28,8 +28,8 @@
             <input type="text" name="obs" class="form-control w-50" placeholder="OBS: Justificativa (opcional)">
             <div>
                 <?php if (isset($workingHours) && $workingHours->time1): ?> 
-                    <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3" onclick="return confirm('Tem certeza que deseja desfazer seu último batimento?');"> 
-                        <i class="icofont-undo mr-1"></i> Desfazer Último
+                    <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3" onclick="return confirm('Tem certeza que deseja desfazer seu último registro?');"> 
+                        <i class="icofont-undo mr-1"></i> Limpar Ponto
                     </a> 
                 <?php endif; ?> 
                 <button type="submit" class="btn btn-success btn-lg">
