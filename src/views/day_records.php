@@ -27,9 +27,9 @@
             <input type="hidden" name="lon" id="lon" value="">
             <input type="text" name="obs" class="form-control w-50" placeholder="OBS: Justificativa (opcional)">
             <div>
-                <?php if ($user->is_admin): ?> 
-                    <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3"> 
-                        <i class="icofont-trash mr-1"></i> Limpar 
+                <?php if (isset($workingHours) && $workingHours->time1): ?> 
+                    <a href="clear_innout.php" class="btn btn-danger btn-lg mr-3" onclick="return confirm('Tem certeza que deseja desfazer seu último batimento?');"> 
+                        <i class="icofont-undo mr-1"></i> Desfazer Último
                     </a> 
                 <?php endif; ?> 
                 <button type="submit" class="btn btn-success btn-lg">

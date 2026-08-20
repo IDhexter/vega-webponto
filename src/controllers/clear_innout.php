@@ -5,30 +5,45 @@ requireValidSession();
 
 $user = $_SESSION['user'];
 
-// Verifica se é admin
-if (!$user->is_admin) {
+$targetUserId = isset($_GET['user_id']) ? $_GET['user_id'] : $user->id;
+$targetDate = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
+
+// Só admin pode limpar ponto de outras pessoas ou de dias anteriores
+if (($targetUserId != $user->id || $targetDate != date('Y-m-d')) && !$user->is_admin) {
     addErrorMsg('Acesso negado.');
     header('Location: day_records.php');
     exit;
 }
 
-// Verifica se foi passado um user_id e date específico, senão usa o do próprio admin hoje
-$targetUserId = isset($_GET['user_id']) ? $_GET['user_id'] : $user->id;
-$targetDate = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
-
 $records = WorkingHours::loadFromUserAndDate($targetUserId, $targetDate);
 
 try {
     if ($records->id) {
-        Database::executeSQL("DELETE FROM working_hours WHERE id = {$records->id}");
-        addSuccessMsg('O registro de ponto foi limpo com sucesso!');
+        if ($records->time2) {
+            // Se tem saída, limpa apenas a saída
+            $records->time2 = null;
+            $records->obs_time2 = null;
+            $records->worked_time = 0;
+            
+            // Remove o log "Sai:" do IP
+            if (strpos($records->last_ip, ' | Sai:') !== false) {
+                $parts = explode(' | Sai:', $records->last_ip);
+                $records->last_ip = $parts[0];
+            }
+            
+            $records->update();
+            addSuccessMsg('Sua Saída foi desfeita. Você pode bater o ponto de saída novamente.');
+        } elseif ($records->time1) {
+            // Se só tem entrada, limpa a entrada (deleta o registro)
+            Database::executeSQL("DELETE FROM working_hours WHERE id = {$records->id}");
+            addSuccessMsg('Sua Entrada foi desfeita. O dia está zerado.');
+        }
     } else {
-        addErrorMsg('Não há registros de ponto para limpar neste dia.');
+        addErrorMsg('Não há registros de ponto para desfazer.');
     }
 } catch(Exception $e) {
-    addErrorMsg('Erro ao limpar ponto.');
+    addErrorMsg('Erro ao desfazer ponto.');
 }
 
-// Retorna para onde veio
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'day_records.php';
 header("Location: {$referer}");
