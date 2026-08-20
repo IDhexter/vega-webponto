@@ -1,8 +1,9 @@
 # Vega WebPonto
 
-Sistema corporativo de controle de ponto e gestão de horas trabalhas, desenvolvido para atender ambientes organizacionais modernos, com suporte a Escalas Mistas e Integração com Active Directory.
+Sistema  de controle de ponto e gestão de horas trabalhas, desenvolvido para atender a Vegacon, com suporte a Escalas Mistas e Integração com Active Directory.
 
-## 🚀 Principais Funcionalidades
+
+## Principais Funcionalidades
 
 - **Autenticação LDAP (Active Directory):** Os funcionários acessam o sistema usando as mesmas credenciais do Windows. O perfil do usuário é criado automaticamente no primeiro acesso.
 - **Batimento Flexível (Escalas Mistas):** Focado em cenários reais, exige apenas 1 Entrada e 1 Saída por dia. Dias não trabalhados não geram saldo negativo ("dívidas").
@@ -19,7 +20,7 @@ Sistema corporativo de controle de ponto e gestão de horas trabalhas, desenvolv
 
 ---
 
-## ⚙️ Instalação Passo a Passo
+## Instalação Passo a Passo
 
 O sistema é homologado para servidores Linux (ex: Rocky Linux, AlmaLinux, CentOS) rodando Apache, PHP 8.3 e MariaDB.
 
