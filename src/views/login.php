@@ -75,9 +75,17 @@
     </head>
 
     <body>
-        <!-- Video em Loop (Placeholder - Você pode alterar o arquivo na pasta) -->
+                <!-- Video em Loop Dinâmico -->
+        <?php
+            $videos = [
+                'assets/videos/bg1.mp4',
+                'assets/videos/bg2.mp4',
+                'assets/videos/bg3.mp4'
+            ];
+            $randomVideo = $videos[array_rand($videos)];
+        ?>
         <video autoplay loop muted playsinline id="bg-video">
-            <source src="assets/video/bg.mp4" type="video/mp4">
+            <source src="<?= $randomVideo ?>" type="video/mp4">
         </video>
 
         <form class="form-login" action="#" method="post">
@@ -131,6 +139,9 @@
         </form>
     </body>
 </html>
+
+
+
 
 
 
