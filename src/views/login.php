@@ -75,12 +75,14 @@
     </head>
 
     <body>
-                <!-- Video em Loop Dinâmico -->
+                        <!-- Video em Loop Dinâmico -->
         <?php
             $videos = [
                 'assets/videos/bg1.mp4',
                 'assets/videos/bg2.mp4',
-                'assets/videos/bg3.mp4'
+                'assets/videos/bg3.mp4',
+                'assets/videos/bg4.mp4',
+                'assets/videos/bg5.mp4'
             ];
             $randomVideo = $videos[array_rand($videos)];
         ?>
@@ -139,6 +141,7 @@
         </form>
     </body>
 </html>
+
 
 
 
